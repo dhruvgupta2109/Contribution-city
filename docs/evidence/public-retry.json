@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-13T12:29:33.686Z",
+  "measurement": "Node HTTP public retry against real GitHub REST with a server-limited calendar fixture; not an actual browser run",
+  "requests": 18,
+  "corsAllowsOrigin": true,
+  "noAuthorization": true,
+  "days": 365,
+  "graphContributions": 1140,
+  "matchedCommits": 740,
+  "rawAuthoredCommits": 900,
+  "catalog": 15,
+  "allCalendarCountsPreserved": true,
+  "allSegmentSumsMatch": true,
+  "warnings": [
+    {
+      "code": "incomplete-attribution",
+      "message": "The shared server quota was exhausted. Public repository commits were loaded using your browser’s anonymous GitHub quota; the server’s exact calendar totals are preserved. Scan limits still apply."
+    },
+    {
+      "code": "incomplete-attribution",
+      "message": "Only the first 300 authored commits in fplmanager were scanned. Remaining activity is Other activity."
+    },
+    {
+      "code": "rate-limited",
+      "message": "GitHub’s rate limit stopped repository attribution. Already fetched commits were kept; remaining activity is Other activity."
+    },
+    {
+      "code": "incomplete-attribution",
+      "message": "Some commit dates or contribution eligibility differ from GitHub’s graph. Attribution was clamped to preserve the exact daily calendar totals."
+    }
+  ]
+}
