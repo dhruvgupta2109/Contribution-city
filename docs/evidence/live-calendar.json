@@ -1,0 +1,35 @@
+{
+  "verified_at_utc": "2026-10-12T20:01:26.873724+00:00",
+  "username": "dhruvgupta2109",
+  "calendar_source": "GitHub public contribution calendar",
+  "range": {
+    "start": "2025-10-13",
+    "end": "2026-10-12"
+  },
+  "dates_compared": 365,
+  "all_daily_totals_match": true,
+  "all_segment_totals_match": true,
+  "total_contributions": 1136,
+  "attributed_commits": 739,
+  "other_activity": 397,
+  "sample_dates": [
+    {
+      "date": "2025-10-13",
+      "contributions": 0
+    },
+    {
+      "date": "2025-12-09",
+      "contributions": 1
+    },
+    {
+      "date": "2026-08-05",
+      "contributions": 18
+    },
+    {
+      "date": "2026-10-12",
+      "contributions": 10
+    }
+  ],
+  "graphQL_live_verification": "pending: no runtime token configured",
+  "browser_gpu_verification": "pending: no browser connected"
+}

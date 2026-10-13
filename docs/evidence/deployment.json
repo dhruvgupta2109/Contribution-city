@@ -1,0 +1,51 @@
+{
+  "site_url": "https://contribution-city-dusk.bushy-horse-2013.chatgpt.site",
+  "project_id": "appgprj_6acd0af8fcd081919829766e050557f9",
+  "version_number": 7,
+  "version_id": "appgprj_6acd0af8fcd081919829766e050557f9~appgver_ec81abe382908191aa24b34eef27eebd",
+  "deployment_id": "appgdep_6acd586be3948191948de9068c2ceeb6",
+  "source_commit": "edd0195ccc4c09b40ba2d509dd3b9921573c5e64",
+  "deployment_status": "succeeded",
+  "audience": "owner-private",
+  "anonymous_html_status": 401,
+  "authorized_html_status": 200,
+  "assets": [
+    {
+      "path": "/assets/index-D76MVwBw.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/three-xDDKEs-N.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-BCnw9RPH.css",
+      "status": 200
+    }
+  ],
+  "authorized_assets_verified": 3,
+  "authorized_api_status": 200,
+  "api_days": 365,
+  "api_total_contributions": 1136,
+  "api_attributed_commits": 0,
+  "all_day_segment_totals_match": true,
+  "warnings": [
+    {
+      "code": "incomplete-attribution",
+      "message": "Showing GitHub’s public contribution calendar. Repository attribution uses public data and may be limited by GitHub’s anonymous request limit. Use an optional token for a larger repository scan."
+    },
+    {
+      "code": "rate-limited",
+      "message": "GitHub’s rate limit stopped repository discovery. Available repositories were kept; unmatched activity remains Other activity."
+    }
+  ],
+  "api_username": "dhruvgupta2109",
+  "partial_attribution_reason": "GitHub anonymous rate limit stopped repository discovery; full calendar retained",
+  "automated_tests": 79,
+  "pending": [
+    "Actual browser/GPU visuals and interactions",
+    "Physical touch-device checks",
+    "Sustained 60 fps measurement",
+    "Live authenticated GraphQL and visitor-token checks"
+  ]
+}
