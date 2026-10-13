@@ -1,0 +1,35 @@
+Contribution City includes adapted portions of Git City by Samuel Rizzon:
+https://github.com/srizzon/git-city
+
+Git City is licensed under the GNU Affero General Public License, version 3.
+The complete license is in LICENSE. This adaptation is AGPL-3.0-only.
+The application footer offers its complete source archive at /source.zip.
+
+Adapted reference files:
+- src/components/CityCanvas.tsx and FlyTune.tsx — flight and tuned camera
+- src/components/IntroColdOpen.tsx — home camera pose
+- src/components/SFMapLayers.tsx — geography, trees, water and ground shader
+- GoldenGateBridge.tsx, BayBridge.tsx and SFLandmarks.tsx — landmarks
+- src/components/city/theme.tsx — palettes and sky stops
+- src/components/city/decorations.tsx — block-grid fallback props
+- src/components/InstancedBuildings.tsx — instanced pixel facade approach
+- src/lib/map-geometry.ts and city-sf-layout.ts — map and footprint indexing
+- src/lib/city-layout-core.ts and github.ts — scores and fallback lots
+- public/models/paper-plane.glb — retained paper plane
+
+Changes include per-repository buildings, fetched authored-commit windows,
+fixed-step flight and traffic, DOM controls, touch input, and queued signals.
+Git City's accounts, purchases, multiplayer and services are not included.
+
+Map data: © OpenStreetMap contributors, https://www.openstreetmap.org/copyright
+Under Open Data Commons Open Database License (ODbL) 1.0; legal text in
+public/licenses/ODbL-1.0.txt. The Bay Area map and San Francisco footprints
+are retained from Git City in public/maps/{bay,sf}.json.gz, included in the
+source archive. The scene is a produced work from that data.
+
+Kenney Nature Kit trees and Car Kit sedan/wheel: Kenney, https://kenney.nl/
+CC0 1.0 Universal; legal text in public/licenses/CC0-1.0.txt.
+Assets are retained in public/models/trees/ and public/models/cars/.
+
+Silkscreen: Copyright 2001 The Silkscreen Project Authors.
+SIL Open Font License 1.1; included at public/fonts/OFL.txt.
