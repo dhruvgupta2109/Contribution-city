@@ -1,0 +1,17 @@
+{
+  "measurement": "Node CPU layout of neutral scenery on road/park-cleared reference footprints; not GPU rendering evidence",
+  "repoBuildings": 16,
+  "ambientBuildings": 800,
+  "layoutMs": 3,
+  "minHeight": 6,
+  "maxHeight": 23,
+  "maxRadius": 1041,
+  "repoTowerCountsUnchanged": true,
+  "sceneAssemblyMs": 60,
+  "ambientBodyInstances": 800,
+  "ambientRoofInstances": 800,
+  "ambientWindowInstances": 23776,
+  "mappedCars": 96,
+  "trafficSignalHeads": 14,
+  "parkPolygons": 1017
+}

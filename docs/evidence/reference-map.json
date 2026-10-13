@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-13T12:16:25.543Z",
+  "preparationMs": 834,
+  "measurement": "Node CPU map preparation; not browser frame-rate evidence",
+  "lots": 25000,
+  "trees": 11001,
+  "parkPolygons": 1017,
+  "nearbyParks": 71,
+  "routes": 48,
+  "cars": 96,
+  "intersections": 5,
+  "repoBuildings": 16,
+  "vertices": {
+    "asphalt": 1388154,
+    "sidewalk": 1388154,
+    "parks": 62322,
+    "land": 3331164
+  },
+  "allFinite": true
+}

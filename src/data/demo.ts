@@ -1,6 +1,12 @@
 import { contributionDates, DAY_COUNT, parseDateKey } from './dates.ts';
 import { seededRandom } from './random.ts';
-import type { CityData, ContributionDay, DateKey, DaySegment, Repository } from './types.ts';
+import type {
+  CityData,
+  ContributionDay,
+  DateKey,
+  DaySegment,
+  Repository,
+} from './types.ts';
 
 // Frozen fixture defaults: reloads on different days still produce the same demo.
 export const DEMO_END_DATE = '2026-10-13';
@@ -30,7 +36,9 @@ export function generateDemoCity({
 
   const dates = contributionDates(endDate);
   const random = seededRandom(seed);
-  const totals = new Map<string, number>(REPOSITORIES.map((repo) => [repo.id, 0]));
+  const totals = new Map<string, number>(
+    REPOSITORIES.map((repo) => [repo.id, 0]),
+  );
 
   const days: ContributionDay[] = dates.map((date, index) => {
     const weekday = parseDateKey(date).getUTCDay();
@@ -52,16 +60,23 @@ export function generateDemoCity({
       if (index % 37 === 0 || random() < 0.18) {
         otherCount += 1;
       } else {
-        const repoIndex = (firstRepo + Math.floor(random() * activeRepoCount)) % REPOSITORIES.length;
+        const repoIndex =
+          (firstRepo + Math.floor(random() * activeRepoCount)) %
+          REPOSITORIES.length;
         const repo = REPOSITORIES[repoIndex]!;
         repoCounts.set(repo.id, (repoCounts.get(repo.id) ?? 0) + 1);
         totals.set(repo.id, (totals.get(repo.id) ?? 0) + 1);
       }
     }
 
-    const segments: DaySegment[] = Array.from(repoCounts, ([repoId, count]) => ({
-      kind: 'repository', repoId, count,
-    }));
+    const segments: DaySegment[] = Array.from(
+      repoCounts,
+      ([repoId, count]) => ({
+        kind: 'repository',
+        repoId,
+        count,
+      }),
+    );
     if (otherCount > 0) segments.push({ kind: 'other', count: otherCount });
 
     return { date, contributionCount, segments };
@@ -71,22 +86,60 @@ export function generateDemoCity({
     ...repo,
     url: `https://github.com/${repo.id}`,
     commitCount: totals.get(repo.id) ?? 0,
-  })).sort((a, b) => b.commitCount - a.commitCount || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+    authoredCommitCount: totals.get(repo.id) ?? 0,
+    scanComplete: true,
+    stars: [128, 64, 21, 7, 42][REPOSITORIES.indexOf(repo)]!,
+    language: ['TypeScript', 'TypeScript', 'Python', 'Go', 'JavaScript'][
+      REPOSITORIES.indexOf(repo)
+    ]!,
+    description: 'A fictional repository in the demo city.',
+    dailyCommits: Object.fromEntries(
+      days.map((day) => [
+        day.date,
+        day.segments.reduce(
+          (sum, segment) =>
+            sum +
+            (segment.kind === 'repository' && segment.repoId === repo.id
+              ? segment.count
+              : 0),
+          0,
+        ),
+      ]),
+    ),
+  })).sort(
+    (a, b) =>
+      b.commitCount - a.commitCount || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0),
+  );
 
-  const repoOrder = new Map(repositories.map((repo, index) => [repo.id, index]));
+  const repoOrder = new Map(
+    repositories.map((repo, index) => [repo.id, index]),
+  );
   for (const day of days) {
     const rank = (segment: DaySegment) =>
-      segment.kind === 'other' ? repositories.length : repoOrder.get(segment.repoId)!;
+      segment.kind === 'other'
+        ? repositories.length
+        : repoOrder.get(segment.repoId)!;
     day.segments.sort((a, b) => rank(a) - rank(b));
   }
 
-  const totalContributions = days.reduce((total, day) => total + day.contributionCount, 0);
-  const totalAttributedCommits = repositories.reduce((total, repo) => total + repo.commitCount, 0);
+  const totalContributions = days.reduce(
+    (total, day) => total + day.contributionCount,
+    0,
+  );
+  const totalAttributedCommits = repositories.reduce(
+    (total, repo) => total + repo.commitCount,
+    0,
+  );
 
   return {
     days,
     repositories,
-    warnings: [{ code: 'demo-data', message: 'This demo uses fictional activity and repositories.' }],
+    warnings: [
+      {
+        code: 'demo-data',
+        message: 'This demo uses fictional activity and repositories.',
+      },
+    ],
     metadata: {
       source: 'demo',
       username: null,

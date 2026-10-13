@@ -1,0 +1,14 @@
+{
+  "measurement": "Live token-free local public flow under anonymous REST rate limiting with a 40-owned-project HTML history cap; Node HTTP, not browser rendering",
+  "username": "gaearon",
+  "elapsedMs": 8878,
+  "days": 365,
+  "calendarContributions": 865,
+  "catalog": 90,
+  "scanned": 28,
+  "rawAuthoredCommits": 140,
+  "calendarMatchedCommits": 127,
+  "htmlFallbackUsed": true,
+  "apiRateLimited": true,
+  "allSegmentsValid": true
+}

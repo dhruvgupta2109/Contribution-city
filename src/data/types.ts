@@ -8,6 +8,15 @@ export interface Repository {
   color: string;
   /** Attributed commits within this city's date range. */
   commitCount: number;
+  /** Raw authored commits fetched, before calendar eligibility/date clamping. */
+  authoredCommitCount?: number;
+  dailyCommits?: Record<DateKey, number>;
+  scanComplete?: boolean;
+  stars?: number;
+  language?: string | null;
+  description?: string | null;
+  size?: number;
+  isFork?: boolean;
 }
 
 export type DaySegment =
@@ -23,7 +32,11 @@ export interface ContributionDay {
 }
 
 export interface CityWarning {
-  code: 'demo-data' | 'incomplete-attribution' | 'rate-limited';
+  code:
+    | 'demo-data'
+    | 'incomplete-attribution'
+    | 'rate-limited'
+    | 'public-history-recovered';
   message: string;
 }
 
@@ -44,6 +57,8 @@ export interface CityMetadata {
 export interface CityData {
   days: ContributionDay[];
   repositories: Repository[];
+  /** Discovered public projects, including quiet or unscanned projects. */
+  repositoryCatalog?: Repository[];
   warnings: CityWarning[];
   metadata: CityMetadata;
 }

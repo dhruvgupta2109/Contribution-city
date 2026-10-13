@@ -1,0 +1,15 @@
+{
+  "measurement": "Version 15 owner-authorized hosted API for a second public profile; no browser/GPU rendering",
+  "checkedAt": "2026-10-13T13:41:33.224Z",
+  "version": 15,
+  "username": "gaearon",
+  "status": 200,
+  "days": 365,
+  "calendarContributions": 865,
+  "catalog": 301,
+  "scanned": 61,
+  "rawAuthoredCommits": 140,
+  "calendarMatchedCommits": 127,
+  "htmlFallbackUsed": true,
+  "allSegmentsValid": true
+}
