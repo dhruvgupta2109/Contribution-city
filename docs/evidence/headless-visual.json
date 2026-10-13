@@ -1,0 +1,25 @@
+{
+  "measurement": "Local Chrome 155 headless visual review on Apple M4 ANGLE Metal at 1440x900; screenshots show actual WebGL output, not physical touch or reference-device appearance",
+  "mapAssetMode": "Vite serves .json.gz with Content-Encoding: gzip; browser Fetch decodes it before JSON parse",
+  "mapLoaded": true,
+  "repositoryBuildings": 16,
+  "ambientBuildings": 800,
+  "mappedCars": 96,
+  "trafficSignalHeads": 14,
+  "mappedParks": 1017,
+  "flightEntered": true,
+  "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "screenshots": [
+    "repository-map-headless.png",
+    "repository-focus-headless.png",
+    "flight-headless.png",
+    "repository-mobile-headless.png"
+  ],
+  "flightSampling": "See headless-flight.json for 60 seconds of sampled frame intervals and controls",
+  "mobileViewportCssPixels": [
+    390,
+    844
+  ],
+  "mobileScrollWidthCssPixels": 390,
+  "flyButtonTextContrastRatio": 11.96
+}
