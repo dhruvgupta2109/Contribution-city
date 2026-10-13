@@ -1,0 +1,13 @@
+{
+  "measurement": "Version 15 owner-authorized hosted HTML-recovered result merged with separately captured live public REST data; data replay, not actual browser rendering",
+  "serverRaw": 902,
+  "browserRaw": 902,
+  "mergedRaw": 902,
+  "serverMatched": 740,
+  "browserMatched": 740,
+  "mergedMatched": 740,
+  "days": 365,
+  "allCalendarCountsPreserved": true,
+  "allSegmentsValid": true,
+  "catalog": 15
+}
