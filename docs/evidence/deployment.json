@@ -1,51 +1,196 @@
 {
-  "site_url": "https://contribution-city-dusk.bushy-horse-2013.chatgpt.site",
-  "project_id": "appgprj_6acd0af8fcd081919829766e050557f9",
-  "version_number": 7,
-  "version_id": "appgprj_6acd0af8fcd081919829766e050557f9~appgver_ec81abe382908191aa24b34eef27eebd",
-  "deployment_id": "appgdep_6acd586be3948191948de9068c2ceeb6",
-  "source_commit": "edd0195ccc4c09b40ba2d509dd3b9921573c5e64",
-  "deployment_status": "succeeded",
-  "audience": "owner-private",
-  "anonymous_html_status": 401,
-  "authorized_html_status": 200,
+  "checkedAt": "2026-10-13T14:03:08.680Z",
+  "url": "https://contribution-city-dusk.bushy-horse-2013.chatgpt.site",
+  "version": 16,
+  "commitSha": "8350711bce4706ca4de45c33b46640ff183e6920",
+  "deploymentId": "appgdep_6ace39d73e0c8191b5472e94a27556a0",
+  "versionId": "appgprj_6acd0af8fcd081919829766e050557f9~appgver_fff84631e6948191a7b9d39ef93a469a",
+  "anonymousStatus": 401,
   "assets": [
     {
-      "path": "/assets/index-D76MVwBw.js",
-      "status": 200
+      "path": "/assets/index-CmM13k2j.js",
+      "status": 200,
+      "bytes": 119970,
+      "contentType": "text/javascript; charset=utf-8",
+      "matchesBuild": true
     },
     {
-      "path": "/assets/three-xDDKEs-N.js",
-      "status": 200
+      "path": "/assets/index-DXhHAbeD.css",
+      "status": 200,
+      "bytes": 14726,
+      "contentType": "text/css; charset=utf-8",
+      "matchesBuild": true
     },
     {
-      "path": "/assets/index-BCnw9RPH.css",
-      "status": 200
+      "path": "/assets/three-Dl26dxYd.js",
+      "status": 200,
+      "bytes": 670790,
+      "contentType": "text/javascript; charset=utf-8",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/world-worker-4bHspmHg.js",
+      "status": 200,
+      "bytes": 103027,
+      "contentType": "text/javascript; charset=utf-8",
+      "matchesBuild": true
+    },
+    {
+      "path": "/favicon.svg",
+      "status": 200,
+      "bytes": 269,
+      "contentType": "image/svg+xml",
+      "matchesBuild": true
+    },
+    {
+      "path": "/fonts/OFL.txt",
+      "status": 200,
+      "bytes": 4394,
+      "contentType": "text/plain; charset=utf-8",
+      "matchesBuild": true
+    },
+    {
+      "path": "/fonts/Silkscreen-Regular.ttf",
+      "status": 200,
+      "bytes": 32220,
+      "contentType": "font/ttf",
+      "matchesBuild": true
+    },
+    {
+      "path": "/index.html",
+      "status": 200,
+      "bytes": 1684,
+      "contentType": "text/html; charset=utf-8",
+      "matchesBuild": false,
+      "htmlReferencesMatch": true
+    },
+    {
+      "path": "/licenses/CC0-1.0.txt",
+      "status": 200,
+      "bytes": 7048,
+      "contentType": "text/plain; charset=utf-8",
+      "matchesBuild": true
+    },
+    {
+      "path": "/licenses/ODbL-1.0.txt",
+      "status": 200,
+      "bytes": 25278,
+      "contentType": "text/plain; charset=utf-8",
+      "matchesBuild": true
+    },
+    {
+      "path": "/maps/bay.json.gz",
+      "status": 200,
+      "bytes": 1004722,
+      "contentType": "application/gzip",
+      "matchesBuild": true
+    },
+    {
+      "path": "/maps/sf.json.gz",
+      "status": 200,
+      "bytes": 960429,
+      "contentType": "application/gzip",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/cars/sedan.glb",
+      "status": 200,
+      "bytes": 43720,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/cars/wheel.glb",
+      "status": 200,
+      "bytes": 26564,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/paper-plane.glb",
+      "status": 200,
+      "bytes": 377648,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/trees/tree_default.glb",
+      "status": 200,
+      "bytes": 9428,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/trees/tree_detailed.glb",
+      "status": 200,
+      "bytes": 31412,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/trees/tree_fat.glb",
+      "status": 200,
+      "bytes": 5576,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/trees/tree_oak.glb",
+      "status": 200,
+      "bytes": 14644,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/trees/tree_palmTall.glb",
+      "status": 200,
+      "bytes": 15592,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/models/trees/tree_pineTallA.glb",
+      "status": 200,
+      "bytes": 7200,
+      "contentType": "model/gltf-binary",
+      "matchesBuild": true
+    },
+    {
+      "path": "/source.zip",
+      "status": 200,
+      "bytes": 3913261,
+      "contentType": "application/zip",
+      "matchesBuild": true
     }
   ],
-  "authorized_assets_verified": 3,
-  "authorized_api_status": 200,
-  "api_days": 365,
-  "api_total_contributions": 1136,
-  "api_attributed_commits": 0,
-  "all_day_segment_totals_match": true,
-  "warnings": [
-    {
-      "code": "incomplete-attribution",
-      "message": "Showing GitHub’s public contribution calendar. Repository attribution uses public data and may be limited by GitHub’s anonymous request limit. Use an optional token for a larger repository scan."
-    },
-    {
-      "code": "rate-limited",
-      "message": "GitHub’s rate limit stopped repository discovery. Available repositories were kept; unmatched activity remains Other activity."
-    }
-  ],
-  "api_username": "dhruvgupta2109",
-  "partial_attribution_reason": "GitHub anonymous rate limit stopped repository discovery; full calendar retained",
-  "automated_tests": 79,
-  "pending": [
-    "Actual browser/GPU visuals and interactions",
-    "Physical touch-device checks",
-    "Sustained 60 fps measurement",
-    "Live authenticated GraphQL and visitor-token checks"
-  ]
+  "api": {
+    "status": 200,
+    "days": 365,
+    "graphContributions": 1140,
+    "matchedCommits": 740,
+    "rawAuthoredCommits": 902,
+    "repositoryCatalog": 15,
+    "scannedRepositories": 11,
+    "allSegmentSumsMatch": true,
+    "notices": [
+      {
+        "code": "incomplete-attribution",
+        "message": "Showing GitHub’s public contribution calendar. Repository attribution uses public data and may be limited by GitHub’s anonymous request limit. Use an optional token for a larger repository scan."
+      },
+      {
+        "code": "rate-limited",
+        "message": "GitHub’s rate limit stopped repository discovery. Available repositories were kept; unmatched activity remains Other activity."
+      },
+      {
+        "code": "incomplete-attribution",
+        "message": "Public repository names and metadata were recovered from GitHub’s website. Commit scans will continue through public history pages where possible; unscanned projects remain marked as such."
+      },
+      {
+        "code": "public-history-recovered",
+        "message": "Public commit-history pages recovered authored dates while GitHub’s anonymous API was limited. Scans may still be partial; exact calendar totals were preserved."
+      }
+    ]
+  },
+  "screenshotAvailable": false,
+  "browserGpuVerified": false
 }
