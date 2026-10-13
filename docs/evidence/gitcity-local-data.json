@@ -1,0 +1,38 @@
+{
+  "username": "dhruvgupta2109",
+  "start_date": "2025-10-14",
+  "end_date": "2026-10-13",
+  "calendar_days": 365,
+  "graph_total": 1140,
+  "calendar_matched_commits": 740,
+  "raw_authored_commits_fetched": 902,
+  "catalog_projects": 15,
+  "scanned_projects": 12,
+  "all_daily_sums_match": true,
+  "public_mode": true,
+  "partial_notices": [
+    "Showing GitHub\u2019s public contribution calendar. Repository attribution uses public data and may be limited by GitHub\u2019s anonymous request limit. Use an optional token for a larger repository scan.",
+    "Only the first 300 authored commits in fplmanager were scanned. Remaining activity is Other activity.",
+    "Some commit dates or contribution eligibility differ from GitHub\u2019s graph. Attribution was clamped to preserve the exact daily calendar totals."
+  ],
+  "sample_repositories": [
+    {
+      "name": "Contribution-city",
+      "raw_fetched": 3,
+      "calendar_matched": 3,
+      "scan_complete": true
+    },
+    {
+      "name": "dhruvgupta2109",
+      "raw_fetched": 66,
+      "calendar_matched": 42,
+      "scan_complete": true
+    },
+    {
+      "name": "NTU-Machine-Learning-Data-Hackathon",
+      "raw_fetched": 20,
+      "calendar_matched": 20,
+      "scan_complete": true
+    }
+  ]
+}
