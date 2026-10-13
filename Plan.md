@@ -2,13 +2,15 @@
 
 ## Current status
 
-**Phases 0–8 are implemented; Phase 9 is deployed; remaining browser/authenticated verification is in progress.**
+**Current goal: adapt the supplied Git City reference to a repository/commit city, with cars, traffic lights, parks, and the same smooth flight controls.** The earlier phase plan below remains the implementation history for the daily calendar view.
+
+The user supplied `gitcity/git-city` and requested its city and flight experience. This supersedes the earlier calendar-first visual direction. Repository towers are now the default; **Days** retains the prior calendar. See `docs/gitcity-analysis.md` for the analysed reference files, exact flight tuning, geometry/palette mapping, and verification boundary.
 
 On 13 October 2026 the user requested implementation of all remaining phases, emphasizing smooth zoom/rotation and a minimal, aesthetic interface. The user explicitly accepted the written specification and a new minimal design because `contribution-city-v3.html` is unavailable. This supersedes the earlier instruction to stop at individual phase boundaries.
 
 The fresh implementation preserves the Vite/TypeScript/Three.js direction. It includes exact calendar geometry, instanced windows and LOD, smoothed pointer/touch/keyboard camera controls, picking, repository isolation/recolouring, statistics, GitHub GraphQL/REST loading, a token-free public-calendar fallback, responsive controls, sharing, PNG export, and both Vercel and Sites deployment adapters.
 
-Public calendar data has been verified against live GitHub. Actual browser/GPU checks and live authenticated GraphQL checks remain pending and are not claimed as passed. The existing owner-private Sites project is selected for release; Vercel support remains available, but its CLI is logged out.
+Public calendar data has been verified against live GitHub. A local headless Chrome 155 run on Apple M4 Metal now verifies map rendering and 60 seconds of flight; physical touch, reference-device feel, exact visual equivalence and live authenticated GraphQL remain pending. The existing owner-private Sites project is selected for release; Vercel support remains available, but its CLI is logged out.
 
 ## Goal
 
@@ -37,18 +39,18 @@ All implementation phases and their release work are now requested. Preserve the
 
 ## Phase overview
 
-| Phase | Outcome | Depends on | Status |
-| --- | --- | --- | --- |
-| 0 | Reference reviewed and visual/data decisions recorded | Written design accepted by user | Written specification accepted; decisions recorded |
-| 1 | Minimal project and deterministic demo data | 0 | Implemented and automated checks pass |
-| 2 | A correctly laid out 3D city with authoritative heights | 1 | Implemented; browser verification pending |
-| 3 | Repo floors, windows, roofs, rise animation, and LOD | 2 | Implemented; browser verification pending |
-| 4 | Camera controls, picking, and day tooltips | 3 | Implemented; browser verification pending |
-| 5 | Repo legend, live filtering/recolouring, and statistics | 4 | Implemented; browser verification pending |
-| 6 | Real contribution calendar through the GitHub proxy | 5 | Implemented; live public data verified, authenticated checks pending |
-| 7 | Repository attribution and resilient partial results | 6 | Implemented; live public data verified, authenticated checks pending |
-| 8 | Complete responsive, accessible product flows | 7 | Implemented; browser verification pending |
-| 9 | Performance verification, documentation, and deployment | 8 | Deployed privately; browser/GPU and authenticated checks pending |
+| Phase | Outcome                                                 | Depends on                      | Status                                                               |
+| ----- | ------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------------- |
+| 0     | Reference reviewed and visual/data decisions recorded   | Written design accepted by user | Written specification accepted; decisions recorded                   |
+| 1     | Minimal project and deterministic demo data             | 0                               | Implemented and automated checks pass                                |
+| 2     | A correctly laid out 3D city with authoritative heights | 1                               | Implemented; browser verification pending                            |
+| 3     | Repo floors, windows, roofs, rise animation, and LOD    | 2                               | Implemented; browser verification pending                            |
+| 4     | Camera controls, picking, and day tooltips              | 3                               | Implemented; browser verification pending                            |
+| 5     | Repo legend, live filtering/recolouring, and statistics | 4                               | Implemented; browser verification pending                            |
+| 6     | Real contribution calendar through the GitHub proxy     | 5                               | Implemented; live public data verified, authenticated checks pending |
+| 7     | Repository attribution and resilient partial results    | 6                               | Implemented; live public data verified, authenticated checks pending |
+| 8     | Complete responsive, accessible product flows           | 7                               | Implemented; browser verification pending                            |
+| 9     | Performance verification, documentation, and deployment | 8                               | Deployed privately; local M4 GPU pass, manual device/authenticated checks pending |
 
 ## Phase 0 — Review the reference and settle the specification
 
@@ -323,10 +325,10 @@ All implementation phases and their release work are now requested. Preserve the
 
 Update this section after each phase. Previous implementation checks do not count toward the new build.
 
-| Phase | Work completed | Checks and evidence | Open issues | Review outcome |
-| --- | --- | --- | --- | --- |
-| Planning | Phases and acceptance checks documented | Plan reviewed for coverage of the original brief | Prototype availability; hosted preview still exists | Awaiting review |
-| 1 | Vite/TypeScript/Three.js foundation, deterministic demo generator, labelled shell, data inspector, graphics fallback, README | Clean `npm ci` succeeds; 18 automated data/DOM checks pass; TypeScript and production build pass; dev and production preview HTTP/asset checks pass; no GitHub API or secrets required | Reference review and actual browser/GPU checks pending; non-blocking Three.js bundle-size warning | Ready for review; stop at Phase 1 |
+| Phase    | Work completed                                                                                                               | Checks and evidence                                                                                                                                                                    | Open issues                                                                                       | Review outcome                    |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------- |
+| Planning | Phases and acceptance checks documented                                                                                      | Plan reviewed for coverage of the original brief                                                                                                                                       | Prototype availability; hosted preview still exists                                               | Awaiting review                   |
+| 1        | Vite/TypeScript/Three.js foundation, deterministic demo generator, labelled shell, data inspector, graphics fallback, README | Clean `npm ci` succeeds; 18 automated data/DOM checks pass; TypeScript and production build pass; dev and production preview HTTP/asset checks pass; no GitHub API or secrets required | Reference review and actual browser/GPU checks pending; non-blocking Three.js bundle-size warning | Ready for review; stop at Phase 1 |
 
 ## All-phase implementation evidence
 
@@ -385,3 +387,82 @@ The private release is live and the authorized endpoint is verified. Continue br
 - Owner-authorized HTML and all three current assets return 200; anonymous HTML remains 401.
 - The API returns all 365 dates and 1,136 contributions, with correct segment sums. Anonymous GitHub quota is exhausted during discovery in this check; the response reports the limit and retains all totals as Other activity. Earlier attributed-commit evidence remains recorded above and in the independent local comparison.
 - Browser inventory and a direct browser-open attempt both confirm that no browser is available. No local runtime GitHub token is configured, and the GitHub CLI is unavailable. Live GPU/touch/performance and authenticated-flow checks need an external access change.
+
+## Git City adaptation — 13 October 2026
+
+- [x] Analyse the supplied scene, layout, facade shaders, props, flight, tuning, themes, assets, and license.
+- [x] Default to one repository tower per discovered project, using fetched authored commits and metadata. Keep raw commits distinct from calendar-matched attribution.
+- [x] Retain quiet/unscanned projects; expose scan status and raw/matched totals in details and accessible tables.
+- [x] Trace the actual home path and port its Bay Area map, SF footprint placement, road/sidewalk/park/coast geometry, water, bridges, landmarks, Kenney tree/car assets, map heights, home camera, navigation mappings and pixel-ratio/culling settings. Preserve the legacy grid only as a loading-error fallback.
+- [x] Port the pixel facades, four themes, sky/fog and bloom.
+- [x] Add moving cars, queued red/amber/green traffic signals, crossings, sidewalks, lamps, trees, benches, and a park fountain.
+- [x] Adapt flight steering, persistent throttle, boost/brake, turn/climb easing, chase camera, bank/pitch, pause/resume, return-to-city and touch input.
+- [x] Verify flight replay at 30/60/120/144 Hz, camera entry/resume, boundaries, hover and high-speed chase distance with meaningful simulation tests.
+- [x] Keep the original Days view, share URLs, cancellation, repository colour/filter controls, and PNG export.
+- [x] Preserve AGPL attribution/license and offer complete source; self-host maps/models/font and retain Kenney CC0, OpenStreetMap ODbL and Silkscreen OFL notices.
+- [x] Current suite: 122 tests pass across 18 files; frontend TypeScript and production build pass.
+- [x] Live local API for `dhruvgupta2109`: 365 dates, 1,140 graph contributions, 740 matched commits, 902 raw authored commits, 15 catalog projects, and 12 scanned repositories. Every daily segment sum matches the calendar. These are public-mode checks, not authenticated GraphQL evidence.
+- [x] Publish the Git City adaptation privately from its exact source state. Models/maps/source return 200 and application assets match the build; Sites injects an HTML bootstrap.
+- [x] Handle the hosted shared-IP GitHub quota: preserve exact calendar and HTML metadata, then retry anonymous public commits from the browser when the server fetched none.
+- [x] Publish the public-retry follow-up as version 9, source `2440b6b4ec4998cebe461e09de8ca72c8c9fc0f0`. All 22 hosted files return 200; non-HTML files match the packaged bytes and HTML retains its mount/title/asset references. Anonymous access remains 401.
+- [ ] User's manual browser review: reference appearance, actual fly/orbit feel, touch controls, lighting/bloom, readable layouts, PNG, and measured performance.
+
+The user chose manual live-site review rather than connecting a browser. Preserve that preference; no actual GPU or physical touch pass is claimed by the automated tests.
+
+### Git City release — version 9
+
+Native deployment succeeded at the existing private URL. Saved-version provenance matches the pushed source and its archive. The 100-file source ZIP passes CRC checks and includes the maps/models/licenses and public-retry implementation. Hosted public API: 365 dates, 1,140 calendar contributions, 15 recovered repository names, correct daily segment sums; its shared GitHub quota is exhausted. The browser-side retry is deployed and independently recovered 900 raw authored commits / 740 matched commits in Node HTTP testing against live public REST. Actual browser/GPU appearance, flight feel, touch, PNG and sustained performance remain for the user's chosen manual review.
+
+### Git City partial-quota follow-up
+
+- [x] Retry whenever the shared server GitHub quota interrupts discovery or attribution, including after some commits were fetched. Merge the best scan per repository and reallocate daily segments once against the exact calendar.
+- [x] Verify overlapping and distinct partial repository scans, server-better results, cancellation, and a saved live-data replay (3 server raw + 902 browser raw → 902 unique raw, 740 matched, 365 valid days). The 115-test suite and TypeScript pass.
+- [x] Publish this partial-quota follow-up as version 10 from source `c5b148e738cec7c9a1b7578fb746aeeb99efe5c5`. All 22 hosted files return 200; non-HTML files match the packaged bytes, HTML retains its app references, and anonymous access remains 401. Live API: 365 days, 1,140 contributions, 15 catalog projects, 23 fetched commits before GitHub limited the server.
+
+### Flight fidelity follow-up
+
+- [x] Match the reference's 50 ms delayed-frame cap, immediate boost FOV, paused lens behavior, and window-level flight keys after HUD controls receive focus. Preserve native slider/button keyboard use and Escape.
+- [x] Verify the 30/60/120/144 Hz replay, focus and input lifecycle, delayed frames, pause, boost/brake and source tuning in 117 tests; TypeScript passes.
+- [x] Publish the flight follow-up as version 11 from source `90ebdc0cd5131bd769018070cb53ad91dbb90184`. All 22 hosted files return 200, non-HTML files match build bytes, HTML retains its app references, and anonymous access remains 401.
+- [ ] User's chosen manual browser review: map/facade/traffic visuals, fly and orbit feel, touch, PNG, responsive layout and sustained performance. No browser is connected to the computer-use tool.
+
+### Git City release — version 11
+
+Native deployment succeeded at the existing private URL. Saved-version provenance matches the pushed source and Worker archive. The 102-file AGPL source ZIP passes CRC checks. The hosted API returns 365 dates, 1,140 calendar contributions, 15 catalog projects and correct daily segment sums. It fetched 86 raw authored commits (69 calendar-matched) before the shared GitHub quota stopped it. A data replay merges that exact hosted partial response with the independently captured public REST response: 902 unique raw authored commits and 740 calendar-matched commits, without changing any of the 365 daily totals. No actual browser/GPU rendering or touch performance is claimed; the user elected manual live review and was asked for any remaining differences.
+
+### Urban skyline follow-up
+
+- [x] Fill unused, road/park-cleared downtown footprints with up to 800 dim scenery buildings. Keep lit/pickable towers and repository counts tied only to real data. Clarify the distinction in the viewport and README.
+- [x] Verify deterministic placement, no overlap with user towers or other scenery, a bounded 6–23-unit height range, and an approximately 3 ms Node CPU layout for the 16-tower live example. The 118-test suite and TypeScript pass.
+- [x] Publish this skyline follow-up as version 12 from source `9a8aacda467aa838c1dc18d7699876ebfadf4c18`. All 22 hosted files return 200; non-HTML files match the packaged build, HTML retains the app references, and anonymous access remains 401. The live API returns 365 exact dates, 1,140 contributions and 15 catalog projects; the shared anonymous quota stopped commit scans at zero on this request. The browser-retry merge replay recovers the separately fetched 902 raw/740 matched commits while preserving every calendar count.
+- [ ] Review its appearance and frame rate in a connected browser or through the user's manual report.
+
+### Flight steering follow-up
+
+- [x] Match Git City's window-wide mouse steering so movement across HUD controls continues to steer smoothly instead of freezing or resetting the pointer input. Keep touch joystick capture scoped to the city surface.
+- [x] Add a regression that moves from the canvas onto a HUD button and verifies turn direction changes; all 119 tests and TypeScript pass.
+- [x] Publish this steering follow-up as version 13 from source `68b91656adb1c3198d8bf7e8db822c50cf640a8c`. All 22 hosted files return 200; non-HTML files match the build bytes, HTML retains the app references, anonymous access remains 401, and the site remains owner-private. The API returns 365 exact days, 1,140 contributions and 15 catalog projects; shared anonymous quota stopped commit scanning on this request.
+- [ ] Confirm mouse and touch feel in the user's manual live-site review.
+
+### Token-free commit-history follow-up
+
+- [x] Parse GitHub's public commit-history records, authored dates, repository/author identity and cursor pagination when the shared anonymous REST quota is exhausted. Bound scans to 40 owned projects, 300 commits each, and the server execution budget. Preserve exact calendar totals and the better of REST/HTML partial scans.
+- [x] Verify the full local token-free flow against live public GitHub while REST is limited: 365 dates, 1,140 contributions, 15 projects, 902 raw authored commits and 740 calendar-matched commits in about 10 seconds. Compare all repository daily counts with independently captured REST results; only the 300-commit-capped project differs at its scan boundary. See `docs/evidence/html-commit-fallback.json`.
+- [x] Keep browser REST retry available with a five-second budget after public history recovery; retain the original 20-second budget when the server has no recovered history. The 122-test suite and TypeScript pass.
+- [x] Publish this fallback as version 14 from source `628a6c905345ec5e451a1e47429f86f0599290fd`. All 22 hosted files return 200; non-HTML files match the build bytes, HTML keeps the app references, anonymous access remains 401, and the audience remains owner-private. The live hosted API recovered 902 raw authored commits and 740 calendar-matched commits for `dhruvgupta2109` while REST remained rate-limited, with 365 exact days, 1,140 contributions and 15 catalog projects. Merging the hosted result with independent live REST data does not double-count commits.
+- [ ] Review the rendered repo skyline and flight feel in the user's chosen manual browser check.
+
+### Broader public-profile follow-up
+
+- [x] Check a second live public profile under the exhausted anonymous REST quota. `gaearon` returned 365 exact days, 865 contributions and 90 catalog projects. Raising the bounded public-history scan from 15 to 40 owned projects increased completed scans from 14 to 28 in under nine seconds; 140 raw authored commits and 127 calendar-matched commits remained stable, with all daily sums valid. See `docs/evidence/second-profile.json`.
+- [x] Publish the broader scan as version 15 from source `f6360362b5353146b8cfc7e512dffe9bcdeaaa5d`. All 22 hosted files return 200; non-HTML assets match the build bytes, HTML keeps app references, anonymous access remains 401, and owner-private access is unchanged. The original profile still returns 365 days, 1,140 contributions, 902 raw/740 matched commits. A second hosted profile returned 365 days, 865 contributions, 301 catalog projects, 61 scan-complete projects, 140 raw/127 matched commits and valid daily sums; partial REST discovery enlarged its catalog before the shared limit stopped it.
+- [ ] Review the rendered city and flight controls on a device.
+
+### Browser map and flight follow-up
+
+- [x] Fix map decoding for Vite's `Content-Encoding: gzip` response. Fetch already inflates that response, while the Sites Worker serves raw `.gz` bytes. The worker now handles both modes; two regression tests cover them.
+- [x] Render the real `dhruvgupta2109` city in local Chrome 155 on Apple M4 Metal: 16 repository/Other towers, 800 dim scenery buildings, 96 cars, 14 traffic heads and 1,017 mapped parks. Capture map, focused tower, flight and 390×844 responsive views; the mobile document has no horizontal overflow.
+- [x] Sample a 60-second headless Metal flight with steering, Shift boost and W climb. Twelve five-second samples showed 16.66–16.67 ms frame-interval EMA, 60–63 draw calls and 2.6–2.7 million triangles; speed rose 55→137 u/s and altitude 676→900 u. This is one high-end GPU, not a mid-range or physical-touch pass. See `docs/evidence/headless-flight.json`.
+- [x] Correct the idle Fly button's text color over lime. Computed contrast is 11.96:1 in Chrome; mobile viewport width and document scroll width are both 390 CSS pixels.
+- [x] Publish version 16 from source `8350711bce4706ca4de45c33b46640ff183e6920`. All 22 hosted files return 200, non-HTML files match build bytes, anonymous access remains 401, and the owner-private audience is unchanged. The hosted map is valid raw gzip matching the build; local Vite's decoded response was verified in Chrome. The real-user API returns 365 days, 1,140 contributions, 902 raw authored commits and 740 calendar-matched commits with valid daily sums.
+- [ ] User's manual comparison with Git City and physical touch/flight feel on their device.
