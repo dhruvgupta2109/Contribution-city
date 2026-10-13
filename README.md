@@ -1,10 +1,10 @@
 # Contribution City
 
-Your year on GitHub, as a small city at dusk. Each of the last 365 days becomes a building; contributions set its height, and repository commits light its windows.
+A Git City-style city made from a GitHub user's repositories and authored commits. Explore pixel-lit repository towers, parks and streets with moving cars and traffic lights, or fly through the skyline with the reference's tuned controls.
 
 **Private live site:** <https://contribution-city-dusk.bushy-horse-2013.chatgpt.site>
 
-Built with Vite, TypeScript, Three.js, and plain DOM controls. The implementation includes the city, smooth camera controls, day inspection, repository isolation and recolouring, GitHub loading, statistics, shareable URLs, and PNG export. See [Plan.md](Plan.md) and [verification notes](docs/verification.md) for evidence and remaining release checks.
+The supplied `gitcity/git-city` reference was analysed and adapted. See [reference analysis](docs/gitcity-analysis.md), [verification notes](docs/verification.md), and [NOTICE](NOTICE). The original daily contribution city remains available under **Days**.
 
 ## Run locally
 
@@ -15,80 +15,92 @@ npm ci
 npm run dev
 ```
 
-Open the URL printed by Vite, normally <http://localhost:5173>. A deterministic demo appears immediately. Enter a GitHub username and choose **Build city** to load real activity. Public calendars work without a token. The Vite dev server supplies the same `/api/city` endpoint used in production.
+Open the Vite URL, normally <http://localhost:5173>. **Demo** loads fictional, deterministic activity immediately. Enter a GitHub username and choose **Build city** for real repositories and commits. The dev server includes the production-style `/api/city?user=username` endpoint.
 
-No external fonts or assets are required. Demo mode works offline after installation. **Inspect daily data** provides a keyboard-accessible table of all 365 dates, including when WebGL is unavailable.
+The maps, trees, cars, font, paper plane, and source offer are self-hosted. No external fonts, model service, database, multiplayer server, or login is needed for the demo. Repository and daily data tables remain usable when WebGL 2 is unavailable.
 
-## Controls
+## City views
 
-| Action | Desktop | Touch / keyboard |
-| --- | --- | --- |
-| Rotate and tilt | Drag | One-finger drag; arrow keys |
-| Smooth zoom | Scroll; + / − buttons | Pinch; + / − keys |
-| Pan | Shift-drag or right-drag | Two-finger drag; Shift + arrows |
-| Zoom toward a point | Scroll at the cursor | Pinch around the finger centre |
-| Zoom in 2.2× | Double-click | + button |
-| Reset view | 1:1 button | 0 or Home key |
-| Inspect a day | Hover; click to pin scrollable details | Tap to pin; daily data table; Esc or × dismisses details |
-| Isolate a repo | Click its legend name; click again to clear | Keyboard-operable legend buttons |
-| Change repo colour | Choose its colour swatch | Native colour picker |
+**Repos** is the default: one tower per discovered project, ranked by authored commits fetched during the displayed 365-day UTC period. An explicitly labelled Other activity tower represents calendar contributions that could not be matched.
 
-Zoom is clamped to **0.4×–16×**. Camera angles and log-distance use frame-rate-independent easing. The default camera fits all city bounds and uses a more diagonal angle on portrait screens. Resizing adapts its framing smoothly; once you explore, it preserves your zoom, rotation, tilt, and pan. Automatic rotation resumes three seconds after interaction and pauses while a day is highlighted. **Orbit** toggles it. Reduced-motion preferences disable automatic rotation and the building rise animation.
+The scene uses Git City's actual **Bay Area map**, San Francisco building footprints, smoothed road/sidewalk geometry, coastline, parks, animated water, Golden Gate Bridge, Bay Bridge, Alcatraz and GitHub HQ landmarks. Repository towers occupy road/park-cleared footprints near downtown. The 25,000 candidate lots support the full catalog. Around them, 800 subdued buildings fill unused nearby lots so a user with few repositories still sees a lived-in skyline; these buildings are scenery and never claim to represent repositories or commits.
 
-**Share** copies the current URL; `?user=username` automatically loads that user. The URL changes only after a successful build. **Export PNG** downloads the renderer's current view, including its sky, without the page controls.
+Tower heights use the reference map's normalized commit/star score and repository size, within **10–360 world units**, with 4-unit window/floor spacing. Pixel windows aggregate all 365 days of each repository's activity into temporal buckets; they do not claim one window per commit.
 
-## GitHub data
+Map geometry is prepared off the main thread from two compressed local files. A loading state disables flight until it is ready. If loading fails, a notice explains the reference-sized block-grid fallback (35–600-unit towers); repository data remains usable.
 
-The server has two modes:
+The map loader accepts both raw `.gz` files and servers that advertise `Content-Encoding: gzip` and let browser Fetch decode them first. This keeps the reference map working in local Vite and the published Worker.
 
-- With `GITHUB_TOKEN`, it queries GitHub GraphQL's `contributionsCollection.contributionCalendar` and attributes public, recently pushed repositories through REST.
-- Without a server token, it reads exact counts from GitHub's public contribution-calendar tooltips, then uses unauthenticated REST for public repository attribution. Both calendar years are fetched when the rolling range spans a year boundary. Colour intensity is never used to estimate counts. Public results are cached in memory for two minutes, with a maximum of 50 entries.
+The city includes 1,017 mapped parks, 11,001 sampled trees using six original Kenney models, sidewalks, zebra crossings, lamps, benches, fountains, and 96 moving Kenney cars on 48 nearby road routes. Signals cycle through green, amber and red with an all-red safety interval. Cars stop before crossings, queue behind one another, resume on green, and make smooth turns at route ends. Reduced-motion preferences freeze ambient traffic and disable rise animation, orbiting and flight shake.
 
-An optional visitor token uses direct browser-to-GitHub GraphQL/REST requests. It is kept only for the current load and cleared afterwards. Tokens never enter URLs, local/session storage, client build variables, or logs. A connected GitHub app in Codex is separate from the website's runtime credentials.
+**Days** retains the original calendar: exactly 365 buildings/slabs, aligned by weekday, with linear activity height `0.12 + contributions × 0.24`. Calendar totals remain authoritative; repository bands stack below grey unmatched activity. Instanced/procedural window detail, filtering and recolouring remain available in this view.
 
-To configure the authenticated server path locally:
+**Emerald**, **Midnight**, **Sunset**, and **Neon** adapt the reference's sky and facade palettes. Bright windows and lights use bloom. Click/tap a building to pin details; Escape or × dismisses them. The legend supports isolation and colour changes.
+
+## Orbit controls
+
+| Action              | Desktop                           | Touch / keyboard                  |
+| ------------------- | --------------------------------- | --------------------------------- |
+| Pan                 | Left drag                         | One-finger drag; arrows           |
+| Rotate / tilt       | Right or Shift/Ctrl drag          | Two-finger motion; Shift + arrows |
+| Zoom toward a point | Scroll at the cursor; middle drag | Pinch at the finger centre        |
+| Zoom in 2.2×        | Double-click                      | + button                          |
+| Reset               | 1:1 button                        | 0 or Home                         |
+| Inspect             | Hover; click to pin               | Tap; accessible data tables       |
+
+The repository map uses the reference's home camera `[-800, 700, -1000]`, target `[0, 70, 0]`, 55° field of view, and **40–36,000-unit** orbit distance range. Zoom and angles ease independently; manual map interaction stops automatic rotation. Resizing preserves the explored view. Repository details and legend buttons can frame a specific tower.
+
+**Days** uses left/one-finger orbit, Shift/right/two-finger pan, and its original **0.4×–16×** zoom range. Its default framing adapts to screen proportions and rotation resumes after interaction.
+
+## Flight controls
+
+Choose **Fly**. The paper plane enters from the current view with a short camera transition.
+
+| Action                | Input                               |
+| --------------------- | ----------------------------------- |
+| Steer / climb         | Mouse position; touch joystick drag |
+| Turn                  | A / D or Left / Right               |
+| Climb / dive          | W / S or Up / Down                  |
+| Persistent throttle   | Wheel or throttle slider            |
+| Temporary boost       | Hold Shift or Boost                 |
+| Temporary brake       | Hold Q / Alt or Brake               |
+| Pause / resume        | Space / P or Pause / Resume         |
+| Pause, then exit      | Escape                              |
+| Point toward the city | R                                   |
+| Exit                  | Exit or Flying button               |
+
+Flight retains the reference's **55 u/s cruise**, **10× throttle cap**, **2.5× Shift boost**, **74 u chase arm**, **24 u chase height**, squared 8% steering deadzone, and tuned turn/climb/speed/camera easing. The chase arm smooths angle and height rather than accumulating position lag. Fixed 1/240-second simulation steps make trajectories consistent across display refresh rates. The original model, two craft lights and fading contrail are included. Flight keys work after the HUD takes focus. Buttons and sliders keep their native keyboard controls; Escape can still pause or exit. Blur or a hidden page pauses flight and clears held inputs.
+
+Mouse steering follows the pointer across the whole window, including HUD controls. Touch steering stays on the city surface's captured joystick pointer.
+
+Flight altitude is clamped to 25–900 world units. These are scene units, not a physical aircraft simulation. Like the reference, flight is an exploration camera and does not simulate building collisions.
+
+## GitHub data and limits
+
+The server supports two calendar modes:
+
+- With `GITHUB_TOKEN`: GitHub GraphQL contribution calendar plus REST repository/commit requests.
+- Without it: exact counts from GitHub's public calendar tooltips plus unauthenticated REST, with public commit-history pages as a bounded fallback when the shared REST quota is exhausted.
+
+Repository discovery retains up to **500 public projects** over five pages. Quiet and unscanned projects remain visible. Commit scans cover up to **15 recently pushed non-fork repositories** normally, or **40** with a visitor token. Scans use GitHub's default-branch commit endpoint, not every branch. Each scans at most **300 authored commits**, with **three** concurrent workers. Individual requests have a 10-second limit and the calendar/REST scan has a 45-second budget.
+
+The catalog distinguishes raw authored commits fetched from commits matched to the calendar. Commit author timestamps are normalized to UTC and duplicate SHAs are removed per repository. Daily attribution is clamped to the graph and the remainder stays Other activity; clamping never changes the raw repository activity used by the repository city.
+
+Rate limits, missing repositories, page caps and timeouts preserve available results. During anonymous API limits, the server can recover public repository names, stars and language from up to three GitHub HTML pages within nine seconds. It then reads authored dates and pagination from public commit-history pages for up to 40 owned projects and 300 commits per project, within the remaining server budget. These are real commit records, not estimates. A live token-free local check recovered 902 raw authored commits and 740 calendar-matched commits while the REST API was limited; see [verification](docs/verification.md). If the shared server quota interrupts scans, the client also retries anonymous REST from the visitor’s browser, retaining the verified calendar and best scan per repository. The retry budget is 5 seconds after public history recovered commits, or 20 seconds otherwise. Partial/unavailable scans are labelled; an unscanned zero is not evidence of no activity. Public results are cached for two minutes, up to 50 users. A failed/cancelled new load preserves the prior city.
+
+An optional password-field visitor token makes direct browser-to-GitHub requests. It is cleared after the load and never stored in local/session storage or URLs. The connected GitHub app in Codex does not supply the website's runtime token.
+
+To use a server token locally:
 
 ```sh
 cp .env.example .env.local
 ```
 
-Set `GITHUB_TOKEN` in `.env.local`, then restart the dev server. Use a GitHub token with access to read the calendar and repositories being inspected. Keep it server-side; **do not use a `VITE_` variable**. `.env.local` is ignored by Git.
+Set `GITHUB_TOKEN` in the ignored file, then restart Vite. Keep it server-side; **do not use a `VITE_` variable**.
 
-The date range includes the current **UTC** date and the preceding 364 dates. Labels also use UTC. Repository attribution uses commit **author timestamps normalized to UTC**, with duplicate SHAs removed within each repository across pages. Commit eligibility or date differences can cause attribution to differ from the graph: daily calendar totals always win, attribution is clamped, and the rest becomes grey **Other activity**.
+## Sharing and export
 
-Other activity includes issues, pull requests, reviews, private or omitted repositories, and unmatched commits. Repository names and totals describe attributed commits only. Repository colours follow descending attributed commit totals, repeating a 12-colour palette beyond 12 repositories.
-
-### Limits and partial results
-
-- Normal/server mode scans up to **15** recently pushed, non-fork repositories; a visitor token allows **40**.
-- Discovery scans at most **5 pages × 100 repositories**.
-- Each repository scans at most **3 pages × 100 authored commits**, with **3** concurrent repository workers.
-- Requests time out after at most **10 seconds**; the scan has a **45-second overall budget**, including public-calendar retrieval in public mode.
-- Empty repositories (409) are harmless. Missing repos, failed pages, timeouts, and rate limits retain fetched commits and preserve exact calendar heights. Data notes explain partial attribution.
-- A failed or cancelled new load preserves the previous city.
-
-## Demo and rendering contract
-
-Demo defaults are frozen: seed `contribution-city-v1`, end date `2026-10-13`, start date `2025-10-14`, five fictional repositories, exactly 365 consecutive dates. `generateDemoCity({ endDate, seed })` accepts other fixtures.
-
-Each day has an authoritative `contributionCount` and ordered segments:
-
-```ts
-{
-  date: '2026-10-13',
-  contributionCount: 8,
-  segments: [
-    { kind: 'repository', repoId: 'demo/city-engine', count: 5 },
-    { kind: 'other', count: 3 },
-  ],
-}
-```
-
-Segment counts always sum to the daily total. Quiet days have no segments and remain visible as slabs. Geometry uses weeks on X, Sunday–Saturday on Z, four-week blocks, and an avenue between Wednesday and Thursday. Building height is `0.12 + contributions × 0.24`; totals are never capped or compressed.
-
-Buildings, windows, repository bands, roofs, lots, and road markings use instanced meshes. Detailed floors have three windows on each of four faces; a stable hash leaves about 12% dark. A 1.2-second ease-out rise respects reduced motion. Windows switch to repo tint bands when floors become small on screen, with hysteresis to avoid flicker.
-
-Detailed window allocations are bounded to 180,000 instances. Buildings beyond that allocation draw their windows procedurally on repository bands: zooming in restores three windows per face per floor without allocating an instance for each window. Both paths retain exact heights, counts, colours, filtering, and deterministic dark windows. Actual GPU appearance and performance still require release review. Hover highlighting updates only the outline, avoiding full window-buffer rebuilds. New city loads dispose old graphics resources.
+**Share** copies the URL; `?user=username` loads that user automatically. The URL updates only after a successful build. **Export PNG** downloads the current rendered view, including the sky and lighting, without the page controls.
 
 ## Checks and builds
 
@@ -99,57 +111,58 @@ npm run build
 npm run preview
 ```
 
-Tests cover deterministic dates, leap years, attribution sums, real-data normalization, repository and pagination caps, failure/partial-result handling, window counts and LOD, expanded GLSL shader syntax, exact geometry, camera easing and cursor anchors, combined pinch/pan, statistics, DOM controls, and load cancellation/stale results. Shader syntax checks do not prove GPU compilation or appearance; browser verification remains separate.
+Tests cover data/API boundaries, raw versus matched commits, catalog retention, geometry, facade activity, filtering, traffic stop/conflict/replay behavior, orbit anchors and resizing, flight across 30/60/120/144 Hz, pause/resume, DOM controls, loading lifecycle, map decoding, and expanded GLSL syntax. A local headless Chrome run rendered the reference map on an Apple M4 Metal GPU and sampled 60 seconds of flight near 16.7 ms per frame at 1440×900. See [verification](docs/verification.md) for screenshots and limits. Visual equivalence to Git City, physical-device touch feel, PNG appearance, and mid-range hardware performance still need manual review.
 
-`npm run build` produces Vercel/static client files in `dist/`. `npm run preview` serves that client build, normally at <http://localhost:4173>, **without the local API**. Use `npm run dev` for full local GitHub loading, or supply a visitor token in preview. Three.js is a separate reusable bundle; Vite's non-blocking 500 kB warning concerns that engine bundle.
+`npm run build` generates Vite client files in `dist/`. Preview serves the client without the local API; use the dev server or a visitor token for GitHub loading. The map uses the reference’s 1.25 device-pixel-ratio cap and view/distance-culls tree instances about ten times per second. The larger reusable Three.js bundle includes the flight model loader and postprocessing. Its size warning does not fail the build.
 
-GitHub Actions runs a clean install, tests, and production build for pushes and pull requests.
+On localhost, `window.cityDiagnostics()` reports draw calls, triangles, frame interval, instance/prop counts and graphics memory without credentials.
 
 ## Deployment
 
-### Vercel
+**Vercel:** Use the Vite preset, `npm run build`, and output directory `dist`. `vercel.json` configures the one function in `api/city.ts`. An optional project `GITHUB_TOKEN` stays server-side.
 
-The repo includes `vercel.json` and exactly one function, `api/city.ts`. Import the GitHub repository into Vercel, use the Vite preset, and retain the build command `npm run build` and output directory `dist`. Optionally set `GITHUB_TOKEN` as a server-side project environment variable; public mode works without it.
-
-For CLI deployment after signing in:
-
-```sh
-npm exec --package=vercel -- vercel login
-npm exec --package=vercel -- vercel --prod
-```
-
-### Sites
-
-`.openai/hosting.json` identifies the existing owner-private Contribution City site. Its deployment uses the same Vite client and data service in one portable Worker. `worker/index.ts` serves the embedded client assets and the single `/api/city` route.
+**Sites:** The existing owner-private project is recorded in `.openai/hosting.json`.
 
 ```sh
 npm run build:sites
 ```
 
-This builds temporary client files in `.site-client/`, then creates `dist/server/index.js` and `dist/.openai/hosting.json` with the client assets embedded in the Worker. This output is for the Sites publication workflow, not `vite preview` or Vercel's static output. Run `npm run build` again to return to a normal Vite build. Publication source is kept in a separate ignored `.site-publish/` checkout so the GitHub repository's remote is preserved.
+This embeds the Vite files, local maps/models/font/licenses, and source ZIP into a Worker serving assets and `/api/city`. Output is `dist/server/index.js` plus hosting metadata. Run `npm run build` to return to the normal static build. Publication uses a separate ignored `.site-publish/` checkout and preserves the GitHub remote and private audience.
+
+The Sites publication checkout sets its default build command to `npm run build:sites`; its downloadable source retains that command and the required hosting metadata. For a static build from that archive, run `npm run typecheck && node scripts/build-source.mjs && npm exec vite -- build`.
 
 ## Structure
 
 ```text
-src/data/                 Types, dates, demo, statistics, GitHub calendar/attribution
-src/rendering/            Calendar layout, instanced city, sky, viewport, picking, export
-src/interaction/camera.ts  Smoothed camera and pointer/keyboard gestures
-src/ui/                   Plain DOM shell, legend, tooltips, statistics, inspector
-src/main.ts               Loading lifecycle, share URLs, export, cleanup
-server/                   Shared endpoint service and public-calendar parser
-api/city.ts               Vercel/Node adapter
-worker/index.ts           Sites Worker adapter
-scripts/build-sites.mjs   Self-contained Sites artifact builder
-docs/                     Verification notes and recorded live data comparison
+src/data/                       UTC calendar, demo, catalog, commit attribution
+src/rendering/repository-*.ts    Repository lots, scores, pixel facades
+src/rendering/world-*.ts         Background map loading and processing
+src/rendering/map-*.ts           Reference geography, models, landmarks, traffic
+src/rendering/traffic.ts         Signals and block-grid fallback traffic
+src/rendering/themes.ts, sky.ts  Adapted palettes and sky
+src/rendering/city-scene.ts      Original daily calendar renderer
+src/rendering/viewport.ts        View switching, picking, bloom, export, cleanup
+src/interaction/flight*.ts       Tuned flight simulation and input
+src/interaction/camera.ts        Smooth orbit, anchored zoom, pan
+src/ui/                         DOM controls, details, legends, data tables
+server/, api/, worker/           Shared data service and deployment adapters
+scripts/build-source.mjs         Credential-excluding source offer builder
+docs/                           Reference analysis and verification evidence
 ```
+
+## License and source offer
+
+This adaptation is **AGPL-3.0-only**. Git City code, geometry, palettes and the paper plane retain attribution to Samuel Rizzon in [NOTICE](NOTICE); see [LICENSE](LICENSE). The Kenney tree and car assets are CC0. Map data is © OpenStreetMap contributors under ODbL 1.0; compressed source map data is included in the source offer. Silkscreen uses the included SIL Open Font License. Third-party license texts are in `public/licenses/` and `public/fonts/`.
+
+The footer's **Source · AGPL-3.0** link downloads `/source.zip`. Builds generate it from an explicit source allowlist. Credentials, `.env.local`, dependencies, generated output, and the supplied reference checkout are excluded.
 
 ## Troubleshooting
 
-- **WebGL unavailable:** Enable graphics acceleration or use a WebGL 2-compatible browser. The daily table and GitHub loading remain available.
-- **Only grey activity:** The calendar loaded, but commits could not be matched. Open the data notes; anonymous API limits or omitted/private repositories may explain it.
-- **Public calendar format changed:** Try the optional token or configure the server token to use GraphQL. The app reports the error and preserves the previous city.
-- **Invalid token / rate limit:** Check token access or retry after the limit resets. Tokens are cleared after the attempt.
-- **Share fails to copy:** Copy the address-bar URL. Clipboard access requires a supported secure context.
-- **Dependency errors:** Use a supported Node version and `npm ci`.
+- **Unlit repo / partial scan:** Inspect the scan status and data notes. Anonymous limits or public-history changes can leave some commit scans unavailable; use an optional token or retry after limits reset.
+- **WebGL unavailable:** Enable graphics acceleration or use a WebGL 2 browser. Both data tables remain available.
+- **Public GitHub markup changed:** Use a visitor/server token; the app preserves the previous city on calendar failure.
+- **Flight stays paused:** Focus the canvas and press Space/P or choose Resume.
+- **Share cannot copy:** Copy the address-bar URL.
+- **Build problems:** Use a supported Node version and `npm ci`.
 
-The user accepted the written specification and a new minimal design because the original prototype is unavailable. Live public-calendar verification is recorded; authenticated GraphQL, actual GPU rendering, physical-device touch feel, and the sustained 60 fps target remain separate checks in [verification notes](docs/verification.md).
+The user chose to review the live site manually. The headless Metal run verifies one local GPU configuration; it does not establish exact visual equivalence or touch feel on the user's device.
