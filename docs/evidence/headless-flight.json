@@ -1,0 +1,103 @@
+{
+  "measurement": "60-second headless Chrome flight on local Vite build; Apple M4 ANGLE Metal renderer at 1440x900, not physical touch or mid-range hardware",
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "durationSeconds": 60.3,
+  "samples": [
+    {
+      "elapsedSeconds": 5.0,
+      "frameMsEma": 16.67,
+      "drawCalls": 63,
+      "triangles": 2656932,
+      "speed": 55,
+      "altitude": 676
+    },
+    {
+      "elapsedSeconds": 10.0,
+      "frameMsEma": 16.67,
+      "drawCalls": 63,
+      "triangles": 2644576,
+      "speed": 55,
+      "altitude": 676
+    },
+    {
+      "elapsedSeconds": 15.0,
+      "frameMsEma": 16.66,
+      "drawCalls": 61,
+      "triangles": 2620108,
+      "speed": 55,
+      "altitude": 676
+    },
+    {
+      "elapsedSeconds": 20.0,
+      "frameMsEma": 16.66,
+      "drawCalls": 60,
+      "triangles": 2688236,
+      "speed": 137,
+      "altitude": 676
+    },
+    {
+      "elapsedSeconds": 25.0,
+      "frameMsEma": 16.67,
+      "drawCalls": 61,
+      "triangles": 2606894,
+      "speed": 137,
+      "altitude": 676
+    },
+    {
+      "elapsedSeconds": 30.1,
+      "frameMsEma": 16.67,
+      "drawCalls": 60,
+      "triangles": 2686846,
+      "speed": 55,
+      "altitude": 676
+    },
+    {
+      "elapsedSeconds": 35.1,
+      "frameMsEma": 16.67,
+      "drawCalls": 61,
+      "triangles": 2621676,
+      "speed": 55,
+      "altitude": 900
+    },
+    {
+      "elapsedSeconds": 40.1,
+      "frameMsEma": 16.67,
+      "drawCalls": 60,
+      "triangles": 2647180,
+      "speed": 55,
+      "altitude": 900
+    },
+    {
+      "elapsedSeconds": 45.1,
+      "frameMsEma": 16.67,
+      "drawCalls": 63,
+      "triangles": 2671246,
+      "speed": 55,
+      "altitude": 900
+    },
+    {
+      "elapsedSeconds": 50.1,
+      "frameMsEma": 16.67,
+      "drawCalls": 61,
+      "triangles": 2617244,
+      "speed": 55,
+      "altitude": 900
+    },
+    {
+      "elapsedSeconds": 55.1,
+      "frameMsEma": 16.67,
+      "drawCalls": 62,
+      "triangles": 2693316,
+      "speed": 55,
+      "altitude": 900
+    },
+    {
+      "elapsedSeconds": 60.1,
+      "frameMsEma": 16.66,
+      "drawCalls": 61,
+      "triangles": 2607184,
+      "speed": 55,
+      "altitude": 900
+    }
+  ]
+}
