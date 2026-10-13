@@ -10,4 +10,6 @@ coverage/
 .site-publish/
 .openai/runtime/
 outputs/
+/public/source.zip
+/gitcity/
 
