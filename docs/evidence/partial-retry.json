@@ -1,0 +1,11 @@
+{
+  "measurement": "Saved live public GitHub data merged with a synthetic 3-commit server limit; CPU/data replay, not browser runtime or GPU evidence",
+  "serverRaw": 3,
+  "browserRaw": 902,
+  "mergedRaw": 902,
+  "browserMatched": 740,
+  "mergedMatched": 740,
+  "days": 365,
+  "allCalendarCountsPreserved": true,
+  "allSegmentSumsValid": true
+}
