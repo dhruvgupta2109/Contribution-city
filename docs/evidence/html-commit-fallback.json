@@ -1,0 +1,16 @@
+{
+  "measurement": "Live token-free local public endpoint flow with GitHub HTML commit fallback and verified author/repository identity; Node HTTP, not browser rendering",
+  "elapsedMs": 9640,
+  "days": 365,
+  "calendarContributions": 1140,
+  "catalog": 15,
+  "scanned": 11,
+  "rawAuthoredCommits": 902,
+  "calendarMatchedCommits": 740,
+  "allSegmentsValid": true,
+  "htmlFallbackUsed": true,
+  "apiRateLimited": true,
+  "dailyCommitsMatchingProjects": 14,
+  "dailyCommitsComparedProjects": 15,
+  "differentProjectWasCappedAt300": true
+}
